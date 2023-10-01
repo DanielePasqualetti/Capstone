@@ -1,0 +1,71 @@
+<div class="mt-5 container w-100">
+  <div class="my-5 d-flex">
+    <div>
+      <mat-form-field>
+        <mat-label>Nome:</mat-label>
+        <input matInput type="text" [(ngModel)]="nuovoSocio.name" id="nome" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Cognome:</mat-label>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="nuovoSocio.lastname"
+          id="cognome"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <mat-label>Data di Iscrizione:</mat-label>
+        <input
+          matInput
+          type="date"
+          [(ngModel)]="nuovoSocio.iscrizione"
+          id="dataIscrizione"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        *ngIf="!modificaAttiva"
+        (click)="aggiungiSocio()"
+      >
+        Aggiungi Socio
+      </button>
+      <button
+        mat-raised-button
+        *ngIf="modificaAttiva"
+        (click)="salvaModifiche()"
+      >
+        Salva Modifiche
+      </button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Data Iscrizione</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let socio of soci">
+        <td>{{ socio?.name }}</td>
+        <td>{{ socio?.lastname }}</td>
+        <td>{{ socio?.iscrizione | date : "dd/MM/yyyy" }}</td>
+        <button mat-fab (click)="modificaSocio(socio!)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-fab (click)="eliminaSocio(socio!.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<div class="container w-100">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Master</th>
+        <th>Stato</th>
+        <th>Gioco</th>
+        <th>Utenti</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tavolo of tavoli">
+        <td>{{ tavolo?.numero }}</td>
+        <td>{{ tavolo?.master }}</td>
+        <td>{{ tavolo?.stato }}</td>
+        <td>{{ tavolo?.gioco }}</td>
+        <td>{{ tavolo?.users }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

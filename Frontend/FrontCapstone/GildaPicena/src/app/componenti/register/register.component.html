@@ -1,0 +1,41 @@
+<div class="container d-flex flex-column align-items-center">
+  <h1 class="text-center fs-1 my-5">Registrati</h1>
+  <form
+    #f="ngForm"
+    class="w-25 d-flex flex-column"
+    #registerForm="ngForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        type="name"
+        name="name"
+        required
+        ngModel
+      /> </mat-form-field
+    ><mat-form-field>
+      <mat-label>Cognome</mat-label>
+      <input matInput type="lastname" name="lastname" required ngModel />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="username" name="username" required ngModel />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" required ngModel />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>password</mat-label>
+      <input matInput type="password" name="password" required ngModel />
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!registerForm.valid">
+      Registrati
+    </button>
+  </form>
+  <div class="alert alert-danger my-3" role="alert" *ngIf="error">
+    {{ error }}
+  </div>
+</div>

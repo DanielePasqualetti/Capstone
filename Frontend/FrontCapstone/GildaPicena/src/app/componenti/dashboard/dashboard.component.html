@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <mat-list class="d-flex flex-row" role="list">
+    <div>
+      <mat-list-item role="listitem" routerLink="home">Home</mat-list-item>
+    </div>
+    <div>
+      <mat-list-item role="listitem" routerLink="about"
+        >Chi siamo</mat-list-item
+      >
+    </div>
+    <div>
+      <mat-list-item role="listitem" routerLink="contact"
+        >Contatti</mat-list-item
+      >
+    </div>
+    <div *ngIf="authSvc.loggedIn">
+      <mat-list-item role="listitem" routerLink="soci">Soci</mat-list-item>
+    </div>
+    <!-- <div>
+      <mat-list-item role="listitem" routerLink="tavoli">Tavoli</mat-list-item>
+    </div>
+    <div>
+      <mat-list-item role="listitem" routerLink="masters"
+        >Masters</mat-list-item
+      >
+    </div>
+    <div>
+      <mat-list-item role="listitem" routerLink="utenti">Utenti</mat-list-item>
+    </div> -->
+    <div>
+      <mat-list-item
+        (click)="logout()"
+        role="listitem"
+        routerLink="logout"
+        *ngIf="authSvc.loggedIn; else loginButton"
+        >Logout</mat-list-item
+      >
+    </div>
+    <ng-template #loginButton>
+      <div>
+        <mat-list-item role="listitem" routerLink="login">Login</mat-list-item>
+      </div>
+    </ng-template>
+    <div>
+      <mat-list-item
+        role="listitem"
+        routerLink="register"
+        *ngIf="!authSvc.loggedIn"
+        >Register</mat-list-item
+      >
+    </div>
+  </mat-list>
+</div>
+<router-outlet></router-outlet>
