@@ -16,6 +16,10 @@ export class SociComponent {
 
   modificaAttiva: boolean = false;
 
+  termineRicerca: string = '';
+
+  sociFiltrati: Partial<ISocio[]> = [];
+
   constructor(private svc: SociService) {}
 
   ngOnInit() {
@@ -66,5 +70,19 @@ export class SociComponent {
         this.nuovoSocio = { id: 0, name: '', lastname: '', iscrizione: '' };
         this.modificaAttiva = false;
       });
+  }
+
+  effettuaRicerca() {
+    if (!this.termineRicerca) {
+      this.sociFiltrati = [];
+      return;
+    }
+
+    this.sociFiltrati = this.soci.filter((socio) => {
+      const nomeCognome = `${socio!.name} ${socio!.lastname}`;
+      return nomeCognome
+        .toLowerCase()
+        .includes(this.termineRicerca.toLowerCase());
+    });
   }
 }
